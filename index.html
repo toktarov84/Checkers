@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шашки</title>
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+<body>
+    <main>
+        <table> <!-- Таблица с доской. -->
+            <tr class="row_0"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr class="row_1"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr class="row_2"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr class="row_3"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr class="row_4"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr class="row_5"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr class="row_6"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr class="row_7"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </table>
+        <br>
+        <div> <!-- Индикатор очереди хода и кнопка рестарта. -->
+            <span class="turn">Ход белых</span> | <button onclick="start()">Рестарт</button> <button onclick="turnColor()">Цвет</button> | <span class="turn">Ход чёрных</span>
+        </div>
+        <br>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

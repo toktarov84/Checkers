@@ -1,0 +1,55 @@
+/* Второй стиль. Необходим для эффекта поворота доски */
+* {
+    margin: auto; /* Автоматический внешний отступ.*/
+    align-items: center;
+}
+main {
+    display: flex;
+    flex-direction: column;
+}
+table { /* Текстура доски. */
+    background: url("../img/board.jpg") no-repeat center;
+    background-size: 99.5%;
+}
+td { /* клетки доски */
+    border: 1px solid;
+    /* vmin - процентная величина меньшей стороны области просмотра */
+    width: 10vmin;
+    height: 10vmin;
+    max-width: 10vmin;
+    max-height: 10vmin;
+}
+.white { /* Чёрные шашки */
+    width: 70%;
+    height: 70%;
+    background: black; /* Названия классов и цвета не совпадают, это "хак" для изменения цвета шашек, без усложнения кода */
+    border: 3px solid grey;
+    border-radius: 50px;
+}
+.black { /* Белые шашки */
+    width: 70%;
+    height: 70%;
+    background: white;
+    border: 3px solid gray;
+    border-radius: 50px;
+}
+.white_king { /* Чёрные дамки */
+    width: 70%;
+    height: 70%;
+    background: black;
+    border: 5px solid red;
+    border-radius: 50px;
+}
+.black_king { /* Белые дамки */
+    width: 70%;
+    height: 70%;
+    background: white;
+    border: 5px solid red;
+    border-radius: 50px;
+}
+div, button {
+    color: black;
+    text-align: center;
+    font-size: 4vmin;
+    font-family: "open sans";
+}

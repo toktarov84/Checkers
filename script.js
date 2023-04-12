@@ -50,7 +50,7 @@ function start() { // Начало партии.
                 cells[row][col].innerHTML = '';
                 continue;
             }
-            cells[row][col].innerHTML = board[row][col]; // Если не пустая, то записываем значения из статового массива,
+            cells[row][col].innerHTML = board[row][col]; // Если не пустая, то записываем значения из стартового массива,
             cells[row][col].onclick = function() {       // и создаём событие реагирующе на нажатие по ячейкам доски,
                 action(this, +row, +col);                // передающее в метод action текущий нод и значения горизонтали\вертикали.
             }

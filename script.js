@@ -9,11 +9,15 @@ const cells = [ // Создание двумерного массива со с�
     document.querySelectorAll('tr.row_7 > td')
 ];
 const turn = document.querySelectorAll('.turn'); // Нод индикации очереди хода.
+const white_score = document.querySelector('.white_score');
+const black_score = document.querySelector('.black_score');
 const link = document.querySelector('link');     // Нод подключения css скрипта.
 
 let board;      // Стартовая доска.
 let turnFlag;   // Флаг очереди хода.
 let queue = []; // Очередь кликов по доске.
+let whiteScore;
+let blackScore;
 
 // Бинды для удобства работы с кодом.
 const click1 = () => queue[0][0]; // Объект с клеткой, которая выбрана первой.
@@ -29,6 +33,8 @@ const whomCapture = () => (turnFlag? '<p class="black"></p>': '<p class="white">
 start()
 
 function start() { // Начало партии.
+    whiteScore = 0;
+    blackScore = 0;
     turn[0].style.color = 'black';      // Выделение очереди хода чёрным цветом.
     turn[1].style.color = 'lightgrey';
     if (link.getAttribute('href') == 'css/style1.css') {    // Проверка поворота доски.
@@ -73,6 +79,7 @@ function move() { // Метод хода шашкой.
         let col = (col2() - col1() > 0)? col1() + 1: col1() - 1;                       // Соседняя вертикаль в направлении взятия
         if (cells[row][col].innerHTML.slice(10, 15) == whomCapture().slice(10, 15)) {  // Проверка что соседняя шашка в направлении взятия противоположного цвета
             cells[row][col].innerHTML = '';                                            // Заполняем HTML код нода соседней шашки пустой строкой. (стираем взятую шашку)
+            plusScore();
             if (hasCapture(row2(), col2())) {                                          // Проверяем, есть ли следующее взятие.
                 [turn[0].style.color, turn[1].style.color] = [turn[1].style.color, turn[0].style.color]; // Меняем местами цвета индикации хода.
                 turnFlag = !turnFlag;                                                                    // Инвентируем флаг очереди хода.
@@ -95,12 +102,22 @@ function kingMove() { // Метод хода дамкой.
     if (own.length == 1) {                      // Если "своя" шашка одна(которая ходит),
         if (enemy.length == 1) {                // Если "чужая" одна(которую бьём),
             enemy[0].innerHTML = '';            // то стираем убитую шашку
+            plusScore();
             if (hasCapture(row2(), col2())) {   // Если можно взять ещё раз,
                 [turn[0].style.color, turn[1].style.color] = [turn[1].style.color, turn[0].style.color];
                 turnFlag = !turnFlag;           // то возвращаем очередь хода той же стороне.
             }
         }
         swap();                                 // Обмениваем клетки первого и второго нажатия местами.
+    }
+}
+function plusScore() {
+    if (cells[row1()][col1()].innerHTML.slice(10, 15) == 'black') {
+        black_score.innerHTML = ++blackScore;
+        if (blackScore == 12) { alert('Чёрные победили!'); }
+    } else if (cells[row1()][col1()].innerHTML.slice(10, 15) == 'white') {
+        white_score.innerHTML = ++whiteScore;
+        if (whiteScore == 12) { alert('Белые победили!'); }
     }
 }
 function hasCapture(row, col) { // Метод проверки возможности повторных взятий.

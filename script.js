@@ -113,10 +113,12 @@ function kingMove() { // Метод хода дамкой.
 }
 function plusScore() {
     if (cells[row1()][col1()].innerHTML.slice(10, 15) == 'black') {
-        black_score.innerHTML = ++blackScore;
+        blackScore++;
+        black_score.innerHTML = blackScore;
         if (blackScore == 12) { alert('Чёрные победили!'); }
     } else if (cells[row1()][col1()].innerHTML.slice(10, 15) == 'white') {
-        white_score.innerHTML = ++whiteScore;
+        whiteScore++;
+        white_score.innerHTML = whiteScore;
         if (whiteScore == 12) { alert('Белые победили!'); }
     }
 }
